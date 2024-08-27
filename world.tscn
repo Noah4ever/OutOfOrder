@@ -16,9 +16,6 @@ sky = SubResource("Sky_0tmfj")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydyce"]
-albedo_color = Color(4.23551e-06, 0.520161, 0.124152, 1)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_oay2r"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sukqa"]
@@ -26,6 +23,9 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pq023"]
 albedo_color = Color(0.980426, 0.74882, 0.769388, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydyce"]
+albedo_color = Color(4.23551e-06, 0.520161, 0.124152, 1)
 
 [node name="World" type="Node3D"]
 
@@ -35,12 +35,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_v7g12")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67409, -0.813971, -4.35318)
-use_collision = true
-size = Vector3(46.1122, 0.106445, 47.45)
-material = SubResource("StandardMaterial3D_ydyce")
 
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9746, 0)
@@ -59,44 +53,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68746, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/Head"]
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="Node" type="Node" parent="."]
+
+[node name="BoxSmall" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5881, -0.409192, -10.7021)
 use_collision = true
 size = Vector3(5.20337, 1, 5.99048)
 material = ExtResource("2_tyqrt")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+[node name="BoxMedium" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.912, 0.0336912, -1.52458)
 use_collision = true
 size = Vector3(5.20337, 2.396, 5.99048)
 material = ExtResource("2_tyqrt")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+[node name="BoxJanis" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3312, 0.632742, 7.4069)
 use_collision = true
 size = Vector3(5.20337, 4.12354, 5.99048)
 material = ExtResource("2_tyqrt")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+[node name="Wall1" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.2388, 0.632742, -4.10026)
 use_collision = true
 size = Vector3(1.38928, 4.12354, 47.8786)
 material = SubResource("StandardMaterial3D_pq023")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+[node name="Wall2" type="CSGBox3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7048, 0.632742, -4.26113)
 use_collision = true
 size = Vector3(1.38928, 4.12354, 50.0876)
 material = SubResource("StandardMaterial3D_pq023")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+[node name="Wall3" type="CSGBox3D" parent="Node"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.66921, 0.400783, 19.9127)
 use_collision = true
 size = Vector3(1.38928, 4.12354, 45.3128)
 material = SubResource("StandardMaterial3D_pq023")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+[node name="Wall4" type="CSGBox3D" parent="Node"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.89078, 0.632742, -27.8746)
 use_collision = true
 size = Vector3(1.38928, 4.12354, 46.6814)
 material = SubResource("StandardMaterial3D_pq023")
+
+[node name="Ground" type="CSGBox3D" parent="Node"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.67409, -0.813971, -4.35318)
+use_collision = true
+size = Vector3(46.1122, 0.106445, 47.45)
+material = SubResource("StandardMaterial3D_ydyce")
